@@ -8,8 +8,8 @@
 <body>
     <header>
         <h1><?php echo $titulo; ?></h1>
-        <a href="/index.php?mod=veiculo&acao=lista">Listar</a>
-        <a href="/index.php?mod=veiculo&acao=digitarnovo">Novo</a>
+        <a href="/veiculo/lista">Listar</a>
+        <a href="/veiculo/digitarnovo">Novo</a>
     </header>
     <main>
         <h2><?php echo $subtitulo; ?></h2>
