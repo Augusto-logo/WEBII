@@ -29,10 +29,14 @@ class DaoVeiculo
 
     public function insert(ModeloVeiculo $v)
     {
-        $sql = "insert into veiculos (fabricante, modelo) values (?,?);";
+        $sql = "insert into veiculos (fabricante, modelo, ano, cor, tipo) values (?,?,?,?,?);";
         $pst = Conexao::getConnection()->prepare($sql);
         $pst->bindValue(1, $v->getFabricante(), PDO::PARAM_STR);
         $pst->bindValue(2, $v->getModelo(), PDO::PARAM_STR);
+        $pst->bindValue(3, $v->getAno(), PDO::PARAM_STR);
+        $pst->bindValue(4, $v->getCor(), PDO::PARAM_STR);
+        $pst->bindValue(5, $v->getTipo(), PDO::PARAM_STR);
+
         if ($pst->execute()) {
             // echo $pst->errorInfo();
             return true;
@@ -53,11 +57,14 @@ class DaoVeiculo
 
     public function update(ModeloVeiculo $v)
     {
-        $sql = "update veiculos set fabricante = ?, modelo = ? where id = ?;";
+        $sql = "update veiculos set fabricante = ?, modelo = ?, ano = ?, cor = ?, tipo = ? where id = ?;";
         $pst = Conexao::getConnection()->prepare($sql);
         $pst->bindValue(1, $v->getFabricante(), PDO::PARAM_STR);
         $pst->bindValue(2, $v->getModelo(), PDO::PARAM_STR);
-        $pst->bindValue(3, $v->getCodigo(), PDO::PARAM_INT);
+        $pst->bindValue(3, $v->getAno(), PDO::PARAM_STR);
+        $pst->bindValue(4, $v->getCor(), PDO::PARAM_STR);
+        $pst->bindValue(5, $v->getTipo(), PDO::PARAM_STR);
+        $pst->bindValue(6, $v->getCodigo(), PDO::PARAM_INT);
         if ($pst->execute()) {
             return true;
         }

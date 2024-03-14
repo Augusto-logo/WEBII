@@ -12,7 +12,11 @@ final class VisaoVeiculo
             $dadosPraTabela .= '<td>' . $linha['id'] . '</td>';
             $dadosPraTabela .= '<td>' . $linha['fabricante'] . '</td>';
             $dadosPraTabela .= '<td>' . $linha['modelo'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['ano'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['cor'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['tipo'] . '</td>';
 
+            //Botão Exclui
             $dadosPraTabela .= '<td>';
             $dadosPraTabela .= '<form action="/veiculo/exclui" method="post">';
             $dadosPraTabela .= '<input type="hidden" name="input_id" value="' . $linha['id'] . '">';
@@ -20,6 +24,7 @@ final class VisaoVeiculo
             $dadosPraTabela .= '</form>';
             $dadosPraTabela .= '</td>';
 
+            //Botão Edit
             $dadosPraTabela .= '<td>';
             $dadosPraTabela .= '<form action="/veiculo/digitarEdicao" method="post">';
             $dadosPraTabela .= '<input type="hidden" name="input_id" value="' . $linha['id'] . '">';
@@ -40,7 +45,7 @@ final class VisaoVeiculo
         $subtitulo = 'Cadastro';
         $form = file_get_contents(__DIR__ . '/templates/fragmentos/form.html');
         $form = str_replace(
-            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}'],
+            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}', '{{ano}}', '{{cor}}', '{{tipo}}'],
             ['/veiculo/novo'],
             $form
         );
@@ -54,9 +59,9 @@ final class VisaoVeiculo
         $subtitulo = 'Edicao';
         $form = file_get_contents(__DIR__ . '/templates/fragmentos/form.html');
         $form = str_replace(
-            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}'],
+            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}', '{{ano}}', '{{cor}}', '{{tipo}}'],
             [
-                '/veiculo/altera', $dados['id'], $dados['fabricante'], $dados['modelo']
+                '/veiculo/altera', $dados['id'], $dados['fabricante'], $dados['modelo'], $dados['ano'], $dados['cor'], $dados['tipo']
             ],
             $form
         );

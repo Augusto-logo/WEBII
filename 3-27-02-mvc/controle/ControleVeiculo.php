@@ -16,7 +16,10 @@ class ControleVeiculo
     {
         $fabricante = filter_input(INPUT_POST, "input_fabricante", FILTER_SANITIZE_STRING);
         $modelo = filter_input(INPUT_POST, "input_modelo", FILTER_SANITIZE_STRING);
-        $v = new ModeloVeiculo($fabricante, $modelo);
+        $ano = filter_input(INPUT_POST, "input_ano", FILTER_SANITIZE_STRING);
+        $cor = filter_input(INPUT_POST, "input_cor", FILTER_SANITIZE_STRING);
+        $tipo = filter_input(INPUT_POST, "input_tipo", FILTER_SANITIZE_STRING);
+        $v = new ModeloVeiculo($fabricante, $modelo, $ano, $cor, $tipo);
         $dao = new DaoVeiculo();
         $visao = new VisaoVeiculo();
         $mensagem = '';
@@ -55,7 +58,10 @@ class ControleVeiculo
         $id = filter_input(INPUT_POST, "input_id", FILTER_SANITIZE_NUMBER_INT);
         $fabricante = filter_input(INPUT_POST, "input_fabricante", FILTER_SANITIZE_STRING);
         $modelo = filter_input(INPUT_POST, "input_modelo", FILTER_SANITIZE_STRING);
-        $v = new ModeloVeiculo($fabricante, $modelo, $id);
+        $ano = filter_input(INPUT_POST, "input_ano", FILTER_SANITIZE_STRING);
+        $cor = filter_input(INPUT_POST, "input_cor", FILTER_SANITIZE_STRING);
+        $tipo = filter_input(INPUT_POST, "input_tipo", FILTER_SANITIZE_STRING);
+        $v = new ModeloVeiculo($fabricante, $modelo, $ano, $cor, $tipo, $id);
         $dao = new DaoVeiculo();
         $visao = new VisaoVeiculo();
         $mensagem = '';

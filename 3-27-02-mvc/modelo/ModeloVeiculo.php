@@ -4,11 +4,17 @@ class ModeloVeiculo
     private $codigo;
     private $fabricante;
     private $modelo;
+	private $ano;
+	private $cor;
+	private $tipo;
 
-    public function __construct($f, $m, $c = null) {
+    public function __construct($f, $m, $a, $co, $t, $c = null ) {
+        $this->codigo = $c;
         $this->fabricante = $f;
         $this->modelo = $m;
-        $this->codigo = $c;
+		$this->ano = $a;
+		$this->cor = $co;
+		$this->tipo = $t;
     }
 
 	/**
@@ -56,6 +62,54 @@ class ModeloVeiculo
 	 */
 	public function setModelo($modelo): self {
 		$this->modelo = $modelo;
+		return $this;
+	}
+
+		/**
+	 * @return mixed
+	 */
+	public function getAno() {
+		return $this->ano;
+	}
+	
+	/**
+	 * @param mixed $ano 
+	 * @return self
+	 */
+	public function setAno($ano): self {
+		$this->ano = $ano;
+		return $this;
+	}
+
+		/**
+	 * @return mixed
+	 */
+	public function getCor() {
+		return $this->cor;
+	}
+	
+	/**
+	 * @param mixed $cor 
+	 * @return self
+	 */
+	public function setCor($cor): self {
+		$this->cor = $cor;
+		return $this;
+	}
+
+		/**
+	 * @return mixed
+	 */
+	public function getTipo() {
+		return $this->tipo;
+	}
+	
+	/**
+	 * @param mixed $tipo 
+	 * @return self
+	 */
+	public function setTipo($tipo): self {
+		$this->tipo = $tipo;
 		return $this;
 	}
 }
