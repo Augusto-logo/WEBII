@@ -1,4 +1,5 @@
 <?php
+namespace Crud\Visao;
 final class VisaoVeiculo
 {
     function mostrarLista($lista)

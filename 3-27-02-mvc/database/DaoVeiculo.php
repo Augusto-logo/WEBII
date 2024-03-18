@@ -1,4 +1,7 @@
 <?php
+namespace Crud\Database;
+use \PDO;
+use \Crud\Modelo\ModeloVeiculo;
 
 class DaoVeiculo
 {

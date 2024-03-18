@@ -1,4 +1,9 @@
 <?php
+namespace Crud\Controle; #Crud faz referência a pasta raiz 3-27... e o Controle a pasta atual.
+use \Crud\Modelo\ModeloVeiculo;
+use \Crud\Database\DaoVeiculo;
+use \Crud\Visao\VisaoVeiculo;
+
 class ControleVeiculo
 {
     public function lista()

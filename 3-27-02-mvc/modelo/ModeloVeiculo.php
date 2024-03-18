@@ -1,4 +1,6 @@
 <?php
+namespace Crud\Modelo;
+
 class ModeloVeiculo
 {
     private $codigo;
