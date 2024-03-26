@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,19 @@
     <a href="/veiculos">Lista</a>
     <a href="/veiculos/novo">Novo</a>
     <hr>
-    <form action="/veiculos/novo" method="POST">
+    <form action="{{ isset($veiculo)? '/veiculos/update' : '/veiculos/novo' }}" method="POST">
         @csrf
+        <input type="hidden" name="id" value="{{ $veiculo->id ?? '' }}">
+
+        <br>
         <label for="fabricante">Fabricante</label><br>
-        <input type="text" name="fabricante" id="fabricante"><br>
+        <input type="text" name="fabricante" id="fabricante" value="{{ $veiculo->fabricante ?? ''}}"><br>
 
         <label for="modelo">Modelo</label><br>
-        <input type="text" name="modelo" id="modelo"><br>
+        <input type="text" name="modelo" id="modelo" value="{{ $veiculo->modelo ?? ''}}"><br>
 
         <label for="cavalos">Cavalos</label><br>
-        <input type="number" name="cavalos" id="cavalos"><br>
+        <input type="number" name="cavalos" id="cavalos" value="{{ $veiculo->cavalos ?? ''}}"><br>
 
         <br>
         <button>Salvar</button>
