@@ -2,6 +2,10 @@ import testeArray from "./testeArray.mjs";
 import testeVariaveis from "./testeVariaveis.mjs";
 import testeFetch from "./testeFetch.mjs";
 
+testeArray();
+testeVariaveis();
+
+
 // server.mjs
 import { createServer } from 'node:http';
 
