@@ -47,7 +47,7 @@ final class VisaoVeiculo
         $form = file_get_contents(__DIR__ . '/templates/fragmentos/form.html');
         $form = str_replace(
             ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}', '{{ano}}', '{{cor}}', '{{tipo}}'],
-            ['/veiculo/novo'],
+            ['/veiculo/novo', '', '', '', '', '', ''],
             $form
         );
         $conteudo = $form;

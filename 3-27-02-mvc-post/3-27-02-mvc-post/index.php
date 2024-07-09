@@ -7,9 +7,11 @@ require_once './visao/VisaoVeiculo.php';
 require_once './controle/ControleVeiculo.php';
 
 $modulo = filter_input(INPUT_GET,'mod', FILTER_SANITIZE_STRING);
-$acao = filter_input(INPUT_GET,'acao', FILTER_SANITIZE_STRING);
+// $acao = filter_input(INPUT_GET,'acao', FILTER_SANITIZE_STRING);
 
-$modulo = 'Controle' . ucfirst($modulo);
+// $modulo = 'Controle' . ucfirst($modulo);
+$modulo = "ControleVeiculo";
+$acao = "lista";
 
 if (class_exists($modulo)) {
     $obj = new $modulo();

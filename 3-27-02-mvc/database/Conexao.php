@@ -5,7 +5,7 @@ use \PDOException;
 
 class Conexao
 {
-    private static $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=web1';   
+    private static $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=laravel_bd';   
     private static $user = 'root';   
     private static $password = 'root';   
     private static $con = null;  
