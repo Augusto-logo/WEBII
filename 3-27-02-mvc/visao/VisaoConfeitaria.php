@@ -1,25 +1,25 @@
 <?php
 namespace Crud\Visao;
-final class VisaoVeiculo
+final class VisaoConfeitaria
 {
     function mostrarLista($lista)
     {
-        $titulo = 'Veículos';
+        $titulo = 'Confeitaria';
         $subtitulo = 'Listagem';
         $dadosPraTabela = '';
         foreach ($lista as $linha) {
             $dadosPraTabela .= '<tr>';
 
             $dadosPraTabela .= '<td>' . $linha['id'] . '</td>';
-            $dadosPraTabela .= '<td>' . $linha['fabricante'] . '</td>';
-            $dadosPraTabela .= '<td>' . $linha['modelo'] . '</td>';
-            $dadosPraTabela .= '<td>' . $linha['ano'] . '</td>';
-            $dadosPraTabela .= '<td>' . $linha['cor'] . '</td>';
-            $dadosPraTabela .= '<td>' . $linha['tipo'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['nome'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['tamanho'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['recheio'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['cobertura'] . '</td>';
+            $dadosPraTabela .= '<td>' . $linha['preco'] . '</td>';
 
             //Botão Exclui
             $dadosPraTabela .= '<td>';
-            $dadosPraTabela .= '<form action="/veiculo/exclui" method="post">';
+            $dadosPraTabela .= '<form action="/confeitaria/exclui" method="post">';
             $dadosPraTabela .= '<input type="hidden" name="input_id" value="' . $linha['id'] . '">';
             $dadosPraTabela .= '<button>Exc</button>';
             $dadosPraTabela .= '</form>';
@@ -27,7 +27,7 @@ final class VisaoVeiculo
 
             //Botão Edit
             $dadosPraTabela .= '<td>';
-            $dadosPraTabela .= '<form action="/veiculo/digitarEdicao" method="post">';
+            $dadosPraTabela .= '<form action="/confeitaria/digitarEdicao" method="post">';
             $dadosPraTabela .= '<input type="hidden" name="input_id" value="' . $linha['id'] . '">';
             $dadosPraTabela .= '<button>Edit</button>';
             $dadosPraTabela .= '</form>';
@@ -42,12 +42,12 @@ final class VisaoVeiculo
 
     function mostrarFormCadastro()
     {
-        $titulo = 'Veículos';
+        $titulo = 'Confeitaria';
         $subtitulo = 'Cadastro';
         $form = file_get_contents(__DIR__ . '/templates/fragmentos/form.html');
         $form = str_replace(
-            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}', '{{ano}}', '{{cor}}', '{{tipo}}'],
-            ['/veiculo/novo', '', '', '', '', '', ''],
+            ['{{act}}', '{{id}}', '{{nome}}', '{{tam}}', '{{rec}}', '{{cob}}', '{{preco}}'],
+            ['/confeitaria/novo', '', '', '', '', '', ''],
             $form
         );
         $conteudo = $form;
@@ -60,9 +60,9 @@ final class VisaoVeiculo
         $subtitulo = 'Edicao';
         $form = file_get_contents(__DIR__ . '/templates/fragmentos/form.html');
         $form = str_replace(
-            ['{{act}}', '{{id}}', '{{fab}}', '{{mod}}', '{{ano}}', '{{cor}}', '{{tipo}}'],
+            ['{{act}}', '{{id}}', '{{nome}}', '{{tam}}', '{{rec}}', '{{cob}}', '{{preco}}'],
             [
-                '/veiculo/altera', $dados['id'], $dados['fabricante'], $dados['modelo'], $dados['ano'], $dados['cor'], $dados['tipo']
+                '/confeitaria/altera', $dados['id'], $dados['nome'], $dados['tamanho'], $dados['recheio'], $dados['cobertura'], $dados['preco']
             ],
             $form
         );

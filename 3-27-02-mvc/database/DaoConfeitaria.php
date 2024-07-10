@@ -1,13 +1,13 @@
 <?php
 namespace Crud\Database;
 use \PDO;
-use \Crud\Modelo\ModeloVeiculo;
+use \Crud\Modelo\ModeloConfeitaria;
 
-class DaoVeiculo
+class DaoConfeitaria
 {
     public function select()
     {
-        $sql = "select * from veiculos;";
+        $sql = "select * from confeitaria;";
         $pst = Conexao::getPrepareStatement($sql);
         if (!$pst) {
             exit("Erro ao preparar");
@@ -19,7 +19,7 @@ class DaoVeiculo
 
     public function selectById($id)
     {
-        $sql = "select * from veiculos where id = ?;";
+        $sql = "select * from confeitaria where id = ?;";
         $pst = Conexao::getPrepareStatement($sql);
         if (!$pst) {
             exit("Erro ao preparar");
@@ -30,15 +30,15 @@ class DaoVeiculo
         return $result;
     }
 
-    public function insert(ModeloVeiculo $v)
+    public function insert(ModeloConfeitaria $v)
     {
-        $sql = "insert into veiculos (fabricante, modelo, ano, cor, tipo) values (?,?,?,?,?);";
+        $sql = "insert into confeitaria (nome, tamanho, recheio, cobertura, preco) values (?,?,?,?,?);";
         $pst = Conexao::getConnection()->prepare($sql);
-        $pst->bindValue(1, $v->getFabricante(), PDO::PARAM_STR);
-        $pst->bindValue(2, $v->getModelo(), PDO::PARAM_STR);
-        $pst->bindValue(3, $v->getAno(), PDO::PARAM_STR);
-        $pst->bindValue(4, $v->getCor(), PDO::PARAM_STR);
-        $pst->bindValue(5, $v->getTipo(), PDO::PARAM_STR);
+        $pst->bindValue(1, $v->getnome(), PDO::PARAM_STR);
+        $pst->bindValue(2, $v->gettamanho(), PDO::PARAM_STR);
+        $pst->bindValue(3, $v->getrecheio(), PDO::PARAM_STR);
+        $pst->bindValue(4, $v->getcobertura(), PDO::PARAM_STR);
+        $pst->bindValue(5, $v->getpreco(), PDO::PARAM_STR);
 
         if ($pst->execute()) {
             // echo $pst->errorInfo();
@@ -49,7 +49,7 @@ class DaoVeiculo
 
     public function delete($id)
     {
-        $sql = "delete from veiculos where id = ?;";
+        $sql = "delete from confeitaria where id = ?;";
         $pst = Conexao::getConnection()->prepare($sql);
         $pst->bindValue(1, $id, PDO::PARAM_INT);
         if ($pst->execute()) {
@@ -58,16 +58,16 @@ class DaoVeiculo
         return false;
     }
 
-    public function update(ModeloVeiculo $v)
+    public function update(ModeloConfeitaria $v)
     {
-        $sql = "update veiculos set fabricante = ?, modelo = ?, ano = ?, cor = ?, tipo = ? where id = ?;";
+        $sql = "update confeitaria set nome = ?, tamanho = ?, recheio = ?, cobertura = ?, preco = ? where id = ?;";
         $pst = Conexao::getConnection()->prepare($sql);
-        $pst->bindValue(1, $v->getFabricante(), PDO::PARAM_STR);
-        $pst->bindValue(2, $v->getModelo(), PDO::PARAM_STR);
-        $pst->bindValue(3, $v->getAno(), PDO::PARAM_STR);
-        $pst->bindValue(4, $v->getCor(), PDO::PARAM_STR);
-        $pst->bindValue(5, $v->getTipo(), PDO::PARAM_STR);
-        $pst->bindValue(6, $v->getCodigo(), PDO::PARAM_INT);
+        $pst->bindValue(1, $v->getnome(), PDO::PARAM_STR);
+        $pst->bindValue(2, $v->gettamanho(), PDO::PARAM_STR);
+        $pst->bindValue(3, $v->getrecheio(), PDO::PARAM_STR);
+        $pst->bindValue(4, $v->getcobertura(), PDO::PARAM_STR);
+        $pst->bindValue(5, $v->getpreco(), PDO::PARAM_STR);
+        $pst->bindValue(6, $v->getId(), PDO::PARAM_INT);
         if ($pst->execute()) {
             return true;
         }
