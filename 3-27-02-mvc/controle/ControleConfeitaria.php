@@ -5,7 +5,7 @@ use \Crud\Database\DaoConfeitaria;
 use \Crud\Visao\VisaoConfeitaria;
 
 
-class ControleConfeitaria
+class ControleConfeitaria            
 {
     public function lista()
     {
@@ -25,11 +25,11 @@ class ControleConfeitaria
         $recheio = filter_input(INPUT_POST, "input_recheio", FILTER_SANITIZE_STRING);
         $cobertura = filter_input(INPUT_POST, "input_cobertura", FILTER_SANITIZE_STRING);
         $preco = filter_input(INPUT_POST, "input_preco", FILTER_SANITIZE_STRING);
-        $v = new ModeloConfeitaria($nome, $tamanho, $recheio, $cobertura, $preco);
+        $c = new ModeloConfeitaria($nome, $tamanho, $recheio, $cobertura, $preco);
         $dao = new DaoConfeitaria();
         $visao = new VisaoConfeitaria();
         $mensagem = '';
-        if ($dao->insert($v)) {
+        if ($dao->insert($c)) {
             $mensagem = 'Inclusão realizada!';
         } else {
             $mensagem = 'Erro ao realizar a inclusão!';
@@ -67,11 +67,11 @@ class ControleConfeitaria
         $recheio = filter_input(INPUT_POST, "input_recheio", FILTER_SANITIZE_STRING);
         $cobertura = filter_input(INPUT_POST, "input_cobertura", FILTER_SANITIZE_STRING);
         $preco = filter_input(INPUT_POST, "input_preco", FILTER_SANITIZE_STRING);
-        $v = new ModeloConfeitaria($nome, $tamanho, $recheio, $cobertura, $preco, $id);
+        $c = new ModeloConfeitaria($nome, $tamanho, $recheio, $cobertura, $preco, $id);
         $dao = new DaoConfeitaria();
         $visao = new VisaoConfeitaria();
         $mensagem = '';
-        if ($dao->update($v)) {
+        if ($dao->update($c)) {
             $mensagem = 'Inclusão realizada!';
         } else {
             $mensagem = 'Erro ao realizar a inclusão!';
