@@ -2,39 +2,56 @@ import Veiculo from "../models/veiculo.mjs";
 
 const VeiculoController = {
     "new": async (req, res) => {
-        //   res.send('Hello World!')
+        // console.log(req.body);
         const created = await Veiculo.create({
             fabricante: req.body.fabricante,
-            modelo: req.body.modelo,
-            cavalos: req.body.cavalos});
-          res.send(created);
+            modelo: req.body.modelo
+        });
+        res.send(created);
     },
-    "one": async (req,res) => {
+    "one": async (req, res) => {
         const v = await Veiculo.findOne({
-            where: {id: req.params.id}
+            where: { id: req.params.id }
         });
         res.json(v);
     },
-    "all":async (req, res) => {
+    "all": async (req, res) => {
         res.json(await Veiculo.findAll());
     },
-    "edit": async (req,res) =>{
+    "edit": async (req, res) => {
         const v = await Veiculo.findOne({
-            where: {id: req.body.id}
+            where: { id: req.body.id }
         });
         v.fabricante = req.body.fabricante;
         v.modelo = req.body.modelo;
-        v.cavalos = req.body.cavalos;
         await v.save();
         res.json(v);
     },
-    "remove": async (req,res) =>{
+    "remove": async (req, res) => {
         const v = await Veiculo.findOne({
-            where: {id: req.body.id}
+            where: { id: req.body.id }
         });
         await v.destroy();
         res.json(v);
-        }
+    }
 };
 
 export default VeiculoController;
+
+
+/*
+const VeiculoController = Object.create(Object.prototype);
+
+VeiculoController.all = async (req, res) => {};
+
+VeiculoController.one = async (req, res) => {
+    const v = await Veiculo.findOne({
+        where: { id: req.params.id }
+    });
+    res.json(v);
+};
+
+VeiculoController.new = async (req, res) => {};
+VeiculoController.edit = async (req, res) => {};
+VeiculoController.remove = async (req, res) => {};
+*/

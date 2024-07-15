@@ -1,37 +1,18 @@
 {
-  
   "name": "6-08-04-back-node",
-  
   "version": "1.0.0",
-  
-  "description": "Prática Node.",
-  
-  "main": "app.js",
-  
+  "description": "Prática node.",
+  "main": "app.mjs",
   "scripts": {
-  
-    
-  "dev": "node --watch app.mjs ",
-  
-    
-  "test": "echo \"Error: no test specified\" && exit 1"
-  
+    "dev": "node app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
   "author": "",
-  
   "license": "ISC",
-  
   "dependencies": {
-  
-    
-  "express": "^4.19.2",
-  
-    
-  "mysql2": "^3.9.3",
-  
-    
-  "sequelize": "^6.37.2"
-  
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.3",
+    "sequelize": "^6.37.2"
   }
 }
