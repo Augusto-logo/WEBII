@@ -6,6 +6,5 @@ const Veiculo = sequelize.define('Veiculonodes', {
     modelo: DataTypes.STRING
 });
 
-await Veiculo.sync();
 
 export default Veiculo;

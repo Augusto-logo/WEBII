@@ -13,6 +13,10 @@ function desenhaTabela() {
         const td2 = document.createElement('td');
         const td3 = document.createElement('td');
         const td4 = document.createElement('td');
+        const td5 = document.createElement('td');
+        const td6 = document.createElement('td');
+        const td7 = document.createElement('td');
+
 
         btEx.innerText = '-';
         btEx.setAttribute('data-id', dados[i].id);
@@ -31,9 +35,12 @@ function desenhaTabela() {
         });
 
         td1.innerText = dados[i].id;
-        td2.innerText = dados[i].fabricante;
-        td3.innerText = dados[i].modelo;
-        td4.append(btEd, btEx);
+        td2.innerText = dados[i].nome;
+        td3.innerText = dados[i].tamanho;
+        td4.innerText = dados[i].preco;
+        td5.innerText = dados[i].nota;
+        td6.innerText = dados[i].vegetariana;
+        td7.append(btEd, btEx);
 
         tr.append(td1, td2, td3, td4);
         tbody.append(tr);
