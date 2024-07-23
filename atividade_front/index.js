@@ -13,6 +13,10 @@ function desenhaTabela() {
         const td2 = document.createElement('td');
         const td3 = document.createElement('td');
         const td4 = document.createElement('td');
+        const td5 = document.createElement('td');
+        const td6 = document.createElement('td');
+        const td7 = document.createElement('tcd');
+
 
         btEx.innerText = '-';
         btEx.setAttribute('data-id', dados[i].id);
@@ -31,24 +35,27 @@ function desenhaTabela() {
         });
 
         td1.innerText = dados[i].id;
-        td2.innerText = dados[i].fabricante;
-        td3.innerText = dados[i].modelo;
-        td4.append(btEd, btEx);
+        td2.innerText = dados[i].nome;
+        td3.innerText = dados[i].tamanho;
+        td4.innerText = dados[i].preço;
+        td5.innerText = dados[i].nota;
+        td6.innerText = dados[i].vegetariana;
+        td7.append(btEd, btEx);
 
-        tr.append(td1, td2, td3, td4);
+        tr.append(td1, td2, td3, td4, td5, td6, td7);
         tbody.append(tr);
     }
 }
 
 function carregaDados() {
-    fetch(`${urlBase}/veiculos`)
+    fetch(`${urlBase}/pizzas`)
         .then((res) => {
-            console.log()
+            // console.log()
             return res.json();
         })
         .then((json) => {
-            console.log(json);
-            alert(json);
+            // console.log(json);
+            // alert(json);
             dados = json;
             desenhaTabela();
         })
@@ -60,14 +67,14 @@ function enviaDadosParaCadastro() {
         method: 'post',
         body: new URLSearchParams(dados)
     };
-    fetch(`${urlBase}/veiculos`, opcoes)
+    fetch(`${urlBase}/pizzas`, opcoes)
         .then((res) => {
-            console.log()
+            // console.log()
             return res.json();
         })
         .then((json) => {
             //console.log(json);
-            alert('Veiculo ' + json.modelo + ' cadastrado!');
+            alert('Pizzas ' + json.modelo + ' cadastrado!');
             carregaDados();
         })
     alternaModal();
@@ -80,13 +87,13 @@ function enviaDadosParaDelecao(id) {
         method: 'delete',
         body: new URLSearchParams(dados)
     };
-    fetch(`${urlBase}/veiculos`, opcoes)
+    fetch(`${urlBase}/pizzas`, opcoes)
         .then((res) => {
             return res.json();
         })
         .then((json) => {
             //console.log(json);
-            alert('Veiculo ' + json.modelo + ' excluido!');
+            alert('Pizzas ' + json.modelo + ' excluido!');
             carregaDados();
         })
     alternaModal();
@@ -94,8 +101,12 @@ function enviaDadosParaDelecao(id) {
 
 function preencheFormParaEdicao(index) {
     document.querySelector('#id').value = dados[index].id;
-    document.querySelector('#fabricante').value = dados[index].fabricante;
-    document.querySelector('#modelo').value = dados[index].modelo;
+    document.querySelector('#nome').value = dados[index].nome;
+    document.querySelector('#tamanho').value = dados[index].tamanho;
+    document.querySelector('#preço').value = dados[index].preço;
+    document.querySelector('#nota').value = dados[index].nota;
+    document.querySelector('#vegetariana').value = dados[index].vegetariana;
+
 }
 
 function enviaDadosParaEdicao() {
@@ -104,13 +115,13 @@ function enviaDadosParaEdicao() {
         method: 'put',
         body: new URLSearchParams(dados)
     };
-    fetch(`${urlBase}/veiculos`, opcoes)
+    fetch(`${urlBase}/pizzas`, opcoes)
         .then((res) => {
             return res.json();
         })
         .then((json) => {
             //console.log(json);
-            alert('Veiculo ' + json.modelo + ' updated!');
+            alert('Pizzas ' + json.modelo + ' updated!');
             carregaDados();
         })
     alternaModal();
